@@ -3,17 +3,17 @@ import Layout from '../layouts/Layout.astro';
 import PasswordGenerator from '../components/PasswordGenerator';
 ---
 
-<Layout title="强密码生成器">
-  <main class="container mx-auto px-4 py-8 max-w-4xl">
-    <header class="text-center mb-8">
-      <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-2">
-        强密码生成器
-      </h1>
-      <p class="text-gray-600 dark:text-gray-400">
-        即时生成高强度安全密码。所有计算均在本地浏览器中完成，绝不向网络传输任何数据。
-      </p>
-    </header>
+<Layout title="强密码生成器 - 免费、安全、本地离线生成">
+	<main class="container mx-auto px-4 py-8 max-w-2xl">
+		<header class="text-center mb-8">
+			<h1 class="text-3xl font-bold tracking-tight text-gray-950 dark:text-white sm:text-4xl">
+				强密码生成器
+			</h1>
+			<p class="mt-2 text-sm text-gray-700 dark:text-gray-300 sm:text-base">
+				即时生成高强度安全密码。所有计算均在本地浏览器中完成，绝不向网络传输任何数据。
+			</p>
+		</header>
 
-    <PasswordGenerator client:load />
-  </main>
+		<PasswordGenerator client:load />
+	</main>
 </Layout>
