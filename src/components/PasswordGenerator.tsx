@@ -314,10 +314,10 @@ export default function PasswordGenerator() {
 
   return (
     <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-lg p-6 sm:p-8 space-y-6">
-      {/* Password Output Section */}
+      {/* 密码展示区域 */}
       <div className="space-y-4">
         <label htmlFor="password-output" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-          {settings.mode === 'passphrase' ? 'Your new passphrase' : 'Your new password'}
+          {settings.mode === 'passphrase' ? '生成的新密码短语' : '生成的新密码'}
         </label>
         <div className="relative">
           <input
@@ -326,7 +326,7 @@ export default function PasswordGenerator() {
             type="text"
             readOnly
             value={password}
-            aria-label="Generated password"
+            aria-label="生成的密码"
             className="w-full px-4 py-3 sm:py-4 text-lg sm:text-xl font-mono text-center bg-gray-50 dark:bg-gray-900 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent select-all text-gray-900 dark:text-gray-100 transition-colors"
           />
         </div>
@@ -339,21 +339,21 @@ export default function PasswordGenerator() {
                 ? 'bg-green-600 hover:bg-green-700 text-white focus:ring-green-500'
                 : 'bg-blue-600 hover:bg-blue-700 text-white focus:ring-blue-500'
             }`}
-            aria-label="Copy password to clipboard"
+            aria-label="复制密码到剪贴板"
           >
             {copied ? (
               <span className="flex items-center justify-center gap-2">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
-                Copied!
+                已复制！
               </span>
             ) : (
               <span className="flex items-center justify-center gap-2">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
                 </svg>
-                Copy Password
+                复制密码
               </span>
             )}
           </button>
@@ -361,13 +361,13 @@ export default function PasswordGenerator() {
             type="button"
             onClick={generate}
             className="flex-1 px-4 py-2.5 sm:py-3 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-900 dark:text-gray-100 rounded-lg font-medium text-sm sm:text-base transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
-            aria-label="Generate new password"
+            aria-label="生成新密码"
           >
             <span className="flex items-center justify-center gap-2">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
               </svg>
-              New Password
+              生成新密码
             </span>
           </button>
         </div>
@@ -378,15 +378,15 @@ export default function PasswordGenerator() {
           aria-atomic="true"
           className="sr-only"
         >
-          {copied ? 'Password copied to clipboard' : ''}
+          {copied ? '密码已复制到剪贴板' : ''}
         </div>
       </div>
 
       <div className="border-t border-gray-200 dark:border-gray-700 pt-6 space-y-6">
-        {/* Mode Toggle */}
+        {/* 模式切换 */}
         <div className="space-y-2">
           <label className="block text-sm font-semibold text-gray-900 dark:text-gray-100">
-            Mode
+            模式
           </label>
           <div className="relative inline-flex rounded-lg bg-gray-100 dark:bg-gray-800 p-1 border border-gray-200 dark:border-gray-700">
             <button
@@ -398,7 +398,7 @@ export default function PasswordGenerator() {
                   : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
               }`}
             >
-              Password
+              普通密码
             </button>
             <button
               type="button"
@@ -409,22 +409,22 @@ export default function PasswordGenerator() {
                   : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
               }`}
             >
-              Passphrase
+              密码短语 (词组)
             </button>
           </div>
           <p className="text-xs text-gray-500 dark:text-gray-400">
             {settings.mode === 'password' 
-              ? 'Generate a random password with customizable character types'
-              : 'Generate a memorable passphrase from random words'}
+              ? '根据自定义字符类型生成高强度随机密码'
+              : '由多个随机单词拼接而成的高强度易记忆密码短语'}
           </p>
         </div>
 
         {settings.mode === 'password' ? (
           <>
-            {/* Password Length */}
+            {/* 密码长度 */}
             <div className="space-y-3">
           <label htmlFor="length-slider" className="block text-sm font-semibold text-gray-900 dark:text-gray-100">
-            Password Length
+            密码长度
           </label>
           <div className="flex gap-4 items-center">
             <input
@@ -437,7 +437,7 @@ export default function PasswordGenerator() {
                 updateSetting('length', parseInt(e.target.value, 10))
               }
               className="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-blue-600 dark:accent-blue-500"
-              aria-label="Password length"
+              aria-label="密码长度"
             />
             <input
               ref={lengthInputRef}
@@ -452,22 +452,22 @@ export default function PasswordGenerator() {
                 }
               }}
               className="w-20 px-3 py-1.5 text-center border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              aria-label="Password length (number input)"
+              aria-label="密码长度 (数字输入)"
             />
           </div>
           <p className="text-xs text-gray-500 dark:text-gray-400">
-            Longer passwords are more secure. We recommend at least 16 characters.
+            密码越长越安全，建议至少保留 16 位以上。
           </p>
         </div>
 
-        {/* Character Types */}
+        {/* 包含的字符类型 */}
         <div className="space-y-3">
           <fieldset className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 space-y-3">
             <legend className="px-2 text-sm font-semibold text-gray-900 dark:text-gray-100">
-              Include These Types of Characters
+              包含的字符类型
             </legend>
             <p className="text-xs text-gray-500 dark:text-gray-400 -mt-2">
-              Select which types of characters you want in your password
+              勾选你希望包含在密码中的字符种类
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
               <label className="flex items-center gap-3 p-3 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50 cursor-pointer transition-colors">
@@ -481,7 +481,7 @@ export default function PasswordGenerator() {
                 />
                 <div className="flex-1">
                   <span className="text-sm font-medium text-gray-900 dark:text-gray-100 block">
-                    Lowercase letters
+                    小写字母
                   </span>
                   <span className="text-xs text-gray-500 dark:text-gray-400">
                     a, b, c, d...
@@ -499,7 +499,7 @@ export default function PasswordGenerator() {
                 />
                 <div className="flex-1">
                   <span className="text-sm font-medium text-gray-900 dark:text-gray-100 block">
-                    Uppercase letters
+                    大写字母
                   </span>
                   <span className="text-xs text-gray-500 dark:text-gray-400">
                     A, B, C, D...
@@ -515,7 +515,7 @@ export default function PasswordGenerator() {
                 />
                 <div className="flex-1">
                   <span className="text-sm font-medium text-gray-900 dark:text-gray-100 block">
-                    Numbers
+                    数字
                   </span>
                   <span className="text-xs text-gray-500 dark:text-gray-400">
                     0, 1, 2, 3...
@@ -531,7 +531,7 @@ export default function PasswordGenerator() {
                 />
                 <div className="flex-1">
                   <span className="text-sm font-medium text-gray-900 dark:text-gray-100 block">
-                    Special characters
+                    特殊符号
                   </span>
                   <span className="text-xs text-gray-500 dark:text-gray-400">
                     !, @, #, $...
@@ -542,7 +542,7 @@ export default function PasswordGenerator() {
           </fieldset>
         </div>
 
-        {/* Exclude Ambiguous */}
+        {/* 排除易混淆字符 */}
         <label className="flex items-start gap-3 p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50 cursor-pointer transition-colors">
           <input
             type="checkbox"
@@ -554,15 +554,15 @@ export default function PasswordGenerator() {
           />
           <div className="flex-1">
             <span className="text-sm font-medium text-gray-900 dark:text-gray-100 block">
-              Exclude confusing characters
+              排除易混淆字符
             </span>
             <span className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-              Removes characters that look similar (like I, l, 1, O, 0) to avoid confusion when typing
+              排除长相相似的字符（如 I, l, 1, O, 0 等），避免手动输入或辨认时出错
             </span>
           </div>
         </label>
 
-        {/* Advanced Options */}
+        {/* 高级选项 */}
         <details
           className="group"
           open={showAdvanced}
@@ -571,7 +571,7 @@ export default function PasswordGenerator() {
           <summary className="cursor-pointer list-none p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
             <div className="flex items-center justify-between">
               <span className="text-sm font-semibold text-gray-900 dark:text-gray-100">
-                Advanced Options
+                高级选项
               </span>
               <svg 
                 className={`w-5 h-5 text-gray-500 dark:text-gray-400 transition-transform ${showAdvanced ? 'rotate-180' : ''}`}
@@ -595,10 +595,10 @@ export default function PasswordGenerator() {
               />
               <div className="flex-1">
                 <span className="text-sm font-medium text-gray-900 dark:text-gray-100 block">
-                  Guarantee each type is included
+                  保证每类字符至少出现一次
                 </span>
                 <span className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                  Ensures your password has at least one character from each selected type above
+                  确保生成的密码中包含上面所选的每一种字符类型至少一个
                 </span>
               </div>
             </label>
@@ -607,17 +607,17 @@ export default function PasswordGenerator() {
                 type="button"
                 onClick={handleResetSettings}
                 className="w-full px-4 py-2 text-sm font-medium text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 border border-red-300 dark:border-red-700 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
-                aria-label="Reset all settings to defaults"
+                aria-label="重置所有设置为默认值"
               >
                 <span className="flex items-center justify-center gap-2">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                   </svg>
-                  Reset Settings
+                  重置设置
                 </span>
               </button>
               <p className="text-xs text-gray-500 dark:text-gray-400 mt-2 text-center">
-                This will clear all saved preferences and restore default settings
+                这将清除浏览器中保存的偏好，并恢复为系统默认设置
               </p>
             </div>
           </div>
@@ -625,10 +625,10 @@ export default function PasswordGenerator() {
           </>
         ) : (
           <>
-            {/* Passphrase Word Count */}
+            {/* 密码短语单词数 */}
             <div className="space-y-3">
               <label htmlFor="word-count-slider" className="block text-sm font-semibold text-gray-900 dark:text-gray-100">
-                Number of Words
+                单词数量
               </label>
               <div className="flex gap-4 items-center">
                 <input
@@ -641,7 +641,7 @@ export default function PasswordGenerator() {
                     updateSetting('wordCount', parseInt(e.target.value, 10))
                   }
                   className="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-blue-600 dark:accent-blue-500"
-                  aria-label="Word count"
+                  aria-label="单词数量"
                 />
                 <input
                   ref={wordCountInputRef}
@@ -656,18 +656,18 @@ export default function PasswordGenerator() {
                     }
                   }}
                   className="w-20 px-3 py-1.5 text-center border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  aria-label="Word count (number input)"
+                  aria-label="单词数量 (数字输入)"
                 />
               </div>
               <p className="text-xs text-gray-500 dark:text-gray-400">
-                More words make your passphrase more secure. We recommend at least 4 words.
+                单词越多密码越安全，建议至少保留 4 个单词。
               </p>
             </div>
 
-            {/* Separator */}
+            {/* 词组分隔符 */}
             <div className="space-y-3">
               <label htmlFor="separator-input" className="block text-sm font-semibold text-gray-900 dark:text-gray-100">
-                Word Separator
+                单词分隔符
               </label>
               <input
                 id="separator-input"
@@ -676,17 +676,17 @@ export default function PasswordGenerator() {
                 value={settings.separator}
                 onChange={(e) => updateSetting('separator', e.target.value || '-')}
                 className="w-20 px-3 py-1.5 text-center border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent font-mono"
-                aria-label="Word separator"
+                aria-label="单词分隔符"
               />
               <p className="text-xs text-gray-500 dark:text-gray-400">
-                Character used to separate words (e.g., "-", "_", " " or none)
+                用于分隔每个单词的字符（例如 "-"、"_"、空格 或留空）
               </p>
             </div>
 
-            {/* Capitalization */}
+            {/* 大小写规则 */}
             <div className="space-y-3">
               <label className="block text-sm font-semibold text-gray-900 dark:text-gray-100">
-                Capitalization
+                大小写规则
               </label>
               <div className="space-y-2">
                 <label className="flex items-center gap-3 p-3 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50 cursor-pointer transition-colors">
@@ -698,7 +698,7 @@ export default function PasswordGenerator() {
                     onChange={() => updateSetting('capitalization', 'none')}
                     className="w-4 h-4 text-blue-600 dark:text-blue-500 border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 cursor-pointer"
                   />
-                  <span className="text-sm text-gray-900 dark:text-gray-100">All lowercase (default)</span>
+                  <span className="text-sm text-gray-900 dark:text-gray-100">全小写 (默认)</span>
                 </label>
                 <label className="flex items-center gap-3 p-3 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50 cursor-pointer transition-colors">
                   <input
@@ -709,7 +709,7 @@ export default function PasswordGenerator() {
                     onChange={() => updateSetting('capitalization', 'first')}
                     className="w-4 h-4 text-blue-600 dark:text-blue-500 border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 cursor-pointer"
                   />
-                  <span className="text-sm text-gray-900 dark:text-gray-100">First letter of each word</span>
+                  <span className="text-sm text-gray-900 dark:text-gray-100">每个单词首字母大写</span>
                 </label>
                 <label className="flex items-center gap-3 p-3 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50 cursor-pointer transition-colors">
                   <input
@@ -720,12 +720,12 @@ export default function PasswordGenerator() {
                     onChange={() => updateSetting('capitalization', 'random')}
                     className="w-4 h-4 text-blue-600 dark:text-blue-500 border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 cursor-pointer"
                   />
-                  <span className="text-sm text-gray-900 dark:text-gray-100">Randomly capitalize one word</span>
+                  <span className="text-sm text-gray-900 dark:text-gray-100">随机将某个单词大写</span>
                 </label>
               </div>
             </div>
 
-            {/* Add Digit/Symbol */}
+            {/* 末尾添加数字/符号 */}
             <div className="space-y-3">
               <label className="flex items-start gap-3 p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50 cursor-pointer transition-colors">
                 <input
@@ -736,10 +736,10 @@ export default function PasswordGenerator() {
                 />
                 <div className="flex-1">
                   <span className="text-sm font-medium text-gray-900 dark:text-gray-100 block">
-                    Add numbers at the end
+                    末尾附加随机数字
                   </span>
                   <span className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                    Appends two random digits to the end of your passphrase
+                    在密码短语结尾随机附加两位数字
                   </span>
                 </div>
               </label>
@@ -752,10 +752,10 @@ export default function PasswordGenerator() {
                 />
                 <div className="flex-1">
                   <span className="text-sm font-medium text-gray-900 dark:text-gray-100 block">
-                    Add special character at the end
+                    末尾附加特殊符号
                   </span>
                   <span className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                    Appends one random special character to the end of your passphrase
+                    在密码短语结尾随机附加一个特殊符号
                   </span>
                 </div>
               </label>
@@ -764,17 +764,15 @@ export default function PasswordGenerator() {
         )}
       </div>
 
-      {/* Keyboard Shortcuts Hint */}
+      {/* 快捷键提示 */}
       <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
         <p className="text-xs text-center text-gray-500 dark:text-gray-400">
-          <span className="font-medium">Keyboard shortcuts:</span>{' '}
-          <kbd className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded text-xs font-mono">G</kbd>enerate,{' '}
-          <kbd className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded text-xs font-mono">C</kbd>opy,{' '}
-          <kbd className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded text-xs font-mono">L</kbd>
-          {settings.mode === 'password' ? 'ength' : 'ength/words'},{' '}
-          <kbd className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded text-xs font-mono">S</kbd>
-          {settings.mode === 'password' ? 'ymbols' : 'ymbol (passphrase)'},{' '}
-          <kbd className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded text-xs font-mono">M</kbd>ode
+          <span className="font-medium">键盘快捷键：</span>{' '}
+          <kbd className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded text-xs font-mono">G</kbd> 生成新密码,{' '}
+          <kbd className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded text-xs font-mono">C</kbd> 复制,{' '}
+          <kbd className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded text-xs font-mono">L</kbd> 聚焦长度/单词数,{' '}
+          <kbd className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded text-xs font-mono">S</kbd> 切换特殊字符,{' '}
+          <kbd className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded text-xs font-mono">M</kbd> 切换生成模式
         </p>
       </div>
     </div>
